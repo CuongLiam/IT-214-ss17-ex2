@@ -1,0 +1,21 @@
+=== LOG KẾT QUẢ POSTMAN & CONSOLE (Dùng để nộp bài) ===
+
+1. THỜI GIAN PHẢN HỒI TRÊN POSTMAN:
+- Lần gọi 1 (Cache Miss):
+  + Request: GET http://localhost:8080/restaurants/101/menu
+  + Thời gian phản hồi (Time): ~3021 ms
+  + Kết quả: Lấy từ DB.
+
+- Lần gọi 2 (Cache Hit):
+  + Request: GET http://localhost:8080/restaurants/101/menu
+  + Thời gian phản hồi (Time): ~5 ms (< 20ms)
+  + Kết quả: Lấy trực tiếp từ Cache.
+
+
+2. LOG CONSOLE SPRING BOOT:
+- Lần gọi 1:
+[DB QUERY] -> Đang truy vấn Database cho Restaurant ID: 101...
+[DB QUERY] -> Truy vấn xong! Đưa dữ liệu vào Cache.
+
+- Lần gọi 2:
+(Không in ra log nào trên console vì không gọi vào phương thức getMenuByRestaurantId)
